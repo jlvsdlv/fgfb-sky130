@@ -1,0 +1,31 @@
+* NGSPICE file created from fgfb_c.ext - technology: sky130A
+
+.subckt cfix2 c2_n1211_n960# m4_n1311_n1060#
+X0 c2_n1211_n960# m4_n1311_n1060# sky130_fd_pr__cap_mim_m3_2 l=9.6 w=9.6
+.ends
+
+.subckt nfgfb a_50_n100# a_n242_n322# a_n108_n100# a_n50_n188#
+X0 a_50_n100# a_n50_n188# a_n108_n100# a_n242_n322# sky130_fd_pr__nfet_g5v0d10v5 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.5
+.ends
+
+.subckt nbulk a_50_n100# a_n242_n322# a_n108_n100# a_n50_n188#
+X0 a_50_n100# a_n50_n188# a_n108_n100# a_n242_n322# sky130_fd_pr__nfet_g5v0d10v5 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.5
+.ends
+
+.subckt cin c1_n250_n200# m3_n350_n300#
+X0 c1_n250_n200# m3_n350_n300# sky130_fd_pr__cap_mim_m3_1 l=2 w=2
+.ends
+
+.subckt cmem m3_n588_n538# c1_n488_n438#
+X0 c1_n488_n438# m3_n588_n538# sky130_fd_pr__cap_mim_m3_1 l=4.38 w=4.38
+.ends
+
+.subckt fgfb_c
+Xcfix2_0 gnd3 fg cfix2
+Xnfgfb_0 vmem body gnd1 fg nfgfb
+Xnbulk_0 gnd2 VSUBS body g2 nbulk
+Xcin_0 fg ina cin
+Xcin_1 fg inb cin
+Xcmem_0 gnd4 vmem cmem
+.ends
+

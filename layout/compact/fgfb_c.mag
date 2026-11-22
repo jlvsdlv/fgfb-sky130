@@ -1,0 +1,145 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1795323309
+<< checkpaint >>
+rect -2871 1798 2293 2321
+rect -2871 -1798 3767 1798
+rect -2871 -2060 3260 -1798
+rect -2871 -2321 2293 -2060
+rect -2260 -2849 1660 -2321
+<< dnwell >>
+rect -720 -800 720 800
+<< nwell >>
+rect -840 520 840 920
+rect -840 -520 -440 520
+rect 440 -520 840 520
+rect -840 -920 840 -520
+<< mvnsubdiff >>
+rect -420 750 420 800
+rect -420 690 -370 750
+rect 370 690 420 750
+rect -420 640 420 690
+<< mvnsubdiffcont >>
+rect -370 690 370 750
+<< locali >>
+rect -400 750 400 770
+rect -400 690 -370 750
+rect 370 690 400 750
+rect -400 670 400 690
+<< viali >>
+rect 180 696 340 744
+rect 196 -150 230 -90
+<< metal1 >>
+rect 160 744 400 770
+rect 160 696 180 744
+rect 340 696 400 744
+rect 160 670 400 696
+rect 500 500 660 540
+rect -46 496 660 500
+rect -46 424 544 496
+rect 616 424 660 496
+rect -46 420 660 424
+rect -46 132 46 420
+rect 500 380 660 420
+rect 1754 132 1846 400
+rect 56 84 184 100
+rect 56 16 112 84
+rect 172 16 184 84
+rect 56 0 184 16
+rect -600 -80 -56 -20
+rect 180 -80 246 -70
+rect 1902 -80 2200 -20
+rect 180 -90 1724 -80
+rect 180 -150 196 -90
+rect 230 -150 1724 -90
+rect 180 -160 1724 -150
+rect 180 -170 246 -160
+<< via1 >>
+rect 544 424 616 496
+rect 112 16 172 84
+<< metal2 >>
+rect 500 500 660 540
+rect 500 420 540 500
+rect 620 420 660 500
+rect 500 380 660 420
+rect 96 84 188 110
+rect 96 16 112 84
+rect 172 16 188 84
+rect 96 -4 188 16
+rect 100 -680 180 -4
+rect 1840 -680 2000 -640
+rect 100 -760 1880 -680
+rect 1960 -760 2000 -680
+rect 1840 -800 2000 -760
+<< via2 >>
+rect 540 496 620 500
+rect 540 424 544 496
+rect 544 424 616 496
+rect 616 424 620 496
+rect 540 420 620 424
+rect 1880 -760 1960 -680
+<< metal3 >>
+rect 500 500 660 540
+rect 500 420 540 500
+rect 620 420 660 500
+rect 500 380 660 420
+rect 1840 -680 2000 -640
+rect 1840 -760 1880 -680
+rect 1960 -760 2000 -680
+rect 1840 -800 2000 -760
+<< via3 >>
+rect 540 420 620 500
+rect 1880 -760 1960 -680
+<< metal4 >>
+rect 500 500 660 540
+rect 500 420 540 500
+rect 620 420 660 500
+rect 500 380 660 420
+rect 2420 -60 2490 60
+rect 1870 -640 1970 -200
+rect 1840 -680 2000 -640
+rect 1840 -760 1880 -680
+rect 1960 -760 2000 -680
+rect 1840 -800 2000 -760
+rect -740 -1577 -660 -1497
+rect 60 -1577 140 -1497
+<< metal5 >>
+rect -360 -60 -240 60
+use cfix2  cfix2_0
+timestamp 1795323014
+transform 1 0 -300 0 1 0
+box -1311 -1061 1333 1061
+use cin  cin_0
+timestamp 1795323014
+transform 0 1 -700 -1 0 -1240
+box -350 -300 349 300
+use cin  cin_1
+timestamp 1795323014
+transform 0 1 100 -1 0 -1240
+box -350 -300 349 300
+use cmem  cmem_0
+timestamp 1795323014
+transform 1 0 1920 0 1 0
+box -588 -538 587 538
+use nbulk  nbulk_0
+timestamp 1795323014
+transform 1 0 1800 0 1 0
+box -278 -358 278 358
+use nfgfb  nfgfb_0
+timestamp 1795323014
+transform 1 0 0 0 1 0
+box -278 -358 278 358
+<< labels >>
+rlabel viali 280 720 280 720 0 vddh
+rlabel via3 580 460 580 460 0 fg
+rlabel metal1 900 -120 900 -120 0 body
+rlabel metal2 1000 -720 1000 -720 0 vmem
+rlabel metal1 -500 -50 -500 -50 0 gnd1
+rlabel metal1 2120 -50 2120 -50 0 gnd2
+rlabel metal1 1800 320 1800 320 0 g2
+rlabel metal5 -300 0 -300 0 0 gnd3
+rlabel metal4 2455 0 2455 0 0 gnd4
+rlabel metal4 -700 -1537 -700 -1537 0 ina
+rlabel metal4 100 -1537 100 -1537 0 inb
+<< end >>

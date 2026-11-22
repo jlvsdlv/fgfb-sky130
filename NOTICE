@@ -1,0 +1,11 @@
+FGFB-SKY130
+Copyright 2026 José Luis Valtierra Sánchez de la Vega (https://github.com/jlvsdlv)
+
+This product includes a floating-gate, floating-body nMOS spiking-neuron design,
+layouts, extracted netlists, simulation scripts and data developed by the author.
+
+If you use this work in research or products, please cite it as described in README.md.
+
+Software, scripts, netlists, data and documentation: Apache License 2.0 (LICENSE).
+Hardware design sources (layout/, GDS and Magic files): CERN-OHL-W-2.0 (LICENSE-HARDWARE).
+The SkyWater SKY130 PDK is a separate work under its own license.

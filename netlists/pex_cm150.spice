@@ -1,0 +1,85 @@
+* NGSPICE file created from fgfb_cell.ext - technology: sky130A
+
+.subckt nfgfb a_50_n100# a_n242_n322# a_n108_n100# a_n50_n188#
+X0 a_50_n100# a_n50_n188# a_n108_n100# a_n242_n322# sky130_fd_pr__nfet_g5v0d10v5 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.5
+C0 a_n50_n188# a_n108_n100# 0.03659f
+C1 a_n50_n188# a_50_n100# 0.03659f
+C2 a_n108_n100# a_50_n100# 0.09386f
+C3 a_50_n100# a_n242_n322# 0.12699f
+C4 a_n108_n100# a_n242_n322# 0.12699f
+C5 a_n50_n188# a_n242_n322# 0.36475f
+.ends
+
+.subckt nbulk a_50_n100# a_n242_n322# a_n108_n100# a_n50_n188#
+X0 a_50_n100# a_n50_n188# a_n108_n100# a_n242_n322# sky130_fd_pr__nfet_g5v0d10v5 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.5
+C0 a_n50_n188# a_n108_n100# 0.03659f
+C1 a_n50_n188# a_50_n100# 0.03659f
+C2 a_n108_n100# a_50_n100# 0.09386f
+C3 a_50_n100# a_n242_n322# 0.12699f
+C4 a_n108_n100# a_n242_n322# 0.12699f
+C5 a_n50_n188# a_n242_n322# 0.36475f
+.ends
+
+.subckt cin c1_n250_n200# m3_n350_n300# VSUBS
+X0 c1_n250_n200# m3_n350_n300# sky130_fd_pr__cap_mim_m3_1 l=2 w=2
+C0 m3_n350_n300# c1_n250_n200# 0.58709f
+C1 c1_n250_n200# VSUBS 0.16402f
+C2 m3_n350_n300# VSUBS 0.83529f
+.ends
+
+.subckt cfix m3_n1110_n1060# c1_n1010_n960# VSUBS
+X0 c1_n1010_n960# m3_n1110_n1060# sky130_fd_pr__cap_mim_m3_1 l=9.6 w=9.6
+C0 m3_n1110_n1060# c1_n1010_n960# 9.24024f
+C1 c1_n1010_n960# VSUBS 0.9383f
+C2 m3_n1110_n1060# VSUBS 3.67086f
+.ends
+
+.subckt cmem c1_n1050_n1000# m3_n1150_n1100# VSUBS
+X0 c1_n1050_n1000# m3_n1150_n1100# sky130_fd_pr__cap_mim_m3_1 l=8.49 w=8.49
+C0 m3_n1150_n1100# c1_n1050_n1000# 9.96457f
+C1 c1_n1050_n1000# VSUBS 0.97905f
+C2 m3_n1150_n1100# VSUBS 3.86041f
+.ends
+
+
+
+
+* ---- top level (was subckt fgfb_cell) ----
+Xnfgfb_0 vmem body gnd1 fg nfgfb
+Xnbulk_0 gnd2 VSUBS body g2 nbulk
+Xcin_0 fg ina VSUBS cin
+Xcin_1 fg inb VSUBS cin
+Xcfix_0 gnd3 fg VSUBS cfix
+Xcmem_0 vmem gnd4 VSUBS cmem
+C0 gnd1 vmem 0.00247f
+C1 gnd1 fg 0.00173f
+C2 gnd1 vddh 0.08995f
+C3 vmem g2 0.00262f
+C4 vmem gnd2 0
+C5 vmem ina 0.00597f
+C6 vmem fg 0.19946f
+C7 vmem inb 0.03741f
+C8 vmem gnd4 0.20871f
+C9 vmem vddh 0.3047f
+C10 g2 gnd2 -0
+C11 g2 vddh 0.00422f
+C12 ina fg 0.32937f
+C13 ina inb 0.14643f
+C14 ina gnd3 0.0579f
+C15 ina vddh 0.01435f
+C16 fg inb 0.18073f
+C17 fg gnd3 0.2226f
+C18 fg vddh 0.34905f
+C19 inb gnd3 0
+C20 gnd3 vddh 0.00228f
+C21 vddh body 12.5908f ; **FLOATING
+C22 gnd4 body -0.0419f
+C23 gnd3 body -0.11666f
+C24 inb body -0.16639f
+C25 fg body 1.57658f
+C26 ina body -0.30991f
+C27 gnd2 body 0.16075f
+C28 g2 body 0.15279f
+C29 vmem body 2.16313f
+C30 gnd1 body 0.16713f
+
