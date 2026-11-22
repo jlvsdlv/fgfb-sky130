@@ -1,6 +1,6 @@
-# FGFB-SKY130: a spiking neuron in one floating-gate, floating-body nMOS (SKY130, post-layout)
+# FGFB-SKY130: a spiking neuron in one floating-gate, floating-bulk nMOS (SKY130, post-layout)
 
-A single 5-V nMOS transistor in SKY130 with **two floating nodes** — a floating body (isolated p-well in a deep n-well, discharged by a second transistor) and a capacitively coupled floating gate — behaves as a programmable, multi-input spiking neuron.
+A single 5-V nMOS transistor in SKY130 with **two floating nodes** — a floating bulk (isolated p-well in a deep n-well, discharged by a second transistor) and a capacitively coupled floating gate — behaves as a programmable, multi-input spiking neuron.
 
 All results here come **only from the open SKY130 foundry compact models and Magic-extracted layout parasitics**, simulated in ngspice. No behavioural macromodel, added bipolar device or fitted parameter is used. The impact-ionization physics is the BSIM4 substrate-current model already in the PDK.
 
@@ -14,7 +14,7 @@ This is released as-is. **If you use it, please [cite it](#how-to-cite).**
 
 ![schematic](figures/schematic.png)
 
-`V_FG = V_Q + β_A·V_A + β_B·V_B + β_D·V_mem`, with `β_i = C_i / C_Σ`. M1 and M2 are `nfet_g5v0d10v5` (W/L = 1/0.5 µm); M1's p-well is isolated in a deep n-well biased at 5 V, and M2 discharges the body. The control gates V_A and V_B are the neuron's inputs; V_Q is the stored floating-gate charge.
+`V_FG = V_Q + β_A·V_A + β_B·V_B + β_D·V_mem`, with `β_i = C_i / C_Σ`. M1 and M2 are `nfet_g5v0d10v5` (W/L = 1/0.5 µm); M1's p-well is isolated in a deep n-well biased at 5 V, and M2 discharges the bulk. The control gates V_A and V_B are the neuron's inputs; V_Q is the stored floating-gate charge.
 
 | Element | Value (model) |
 |---|---|
@@ -22,7 +22,7 @@ This is released as-is. **If you use it, please [cite it](#how-to-cite).**
 | C_fix | 173 fF (MIM 9.6×9.6 µm) |
 | C_mem | 188 fF (MIM 10×10 µm); 38 fF in the compact cell |
 | β_A | ≈ 0.044 (1.8 V input step → 77–82 mV on FG) |
-| Body capacitance (extracted) | ≈ 16.8 fF |
+| Bulk capacitance (extracted) | ≈ 16.8 fF |
 
 ## Key results (extracted layout, tt, 27 °C, V_G2 = 0.5 V unless noted)
 
@@ -42,7 +42,7 @@ Additional explored results (in `data/`): coupled-oscillator / Ising behaviour (
 
 ## Limitations — please read
 
-- The SKY130 impact-ionization parameters are extracted with a grounded body. Floating-body operation is an extrapolation of a calibrated model; **absolute trigger voltages/currents need measurement or TCAD confirmation**.
+- The SKY130 impact-ionization parameters are extracted with a grounded bulk. Floating-bulk operation is an extrapolation of a calibrated model; **absolute trigger voltages/currents need measurement or TCAD confirmation**.
 - The models contain no lateral bipolar transistor.
 - Floating-gate programming (tunnelling / hot-carrier injection) is **not** modelled; V_Q is set in the test bench through a 1e18 Ω resistor (or an initial condition for the compact cell).
 - Input weights are fixed by capacitor sizing; no synaptic plasticity was obtained from PDK physics (a Pazos-style pulsed potentiation test gave a single saturating ~5 % change).
@@ -74,7 +74,7 @@ cd sim
 python3 -c "import lib; d=lib.run(0.45,0.5,'Vdrv vd 0 0\nIin vd vmem 50n',srcA='1.8',T=80e-6,maxstep=4e-9,ic=3.0); print(d[-1])"
 ```
 
-`lib.run(V_Q, V_G2, drive, srcA, srcB, T, maxstep, ic, corner, temp, mc, seed)` builds a test bench around `netlists/pex_flat.spice` (the netlists are also copied into `sim/`). Output columns: t, V_mem, I(Vdrv), V_FG, V_body. Set `lib.HDR = lib.HDR.replace("pex_flat.spice","pexc_flat.spice"); lib.FGIC = True` for the compact cell.
+`lib.run(V_Q, V_G2, drive, srcA, srcB, T, maxstep, ic, corner, temp, mc, seed)` builds a test bench around `netlists/pex_flat.spice` (the netlists are also copied into `sim/`). Output columns: t, V_mem, I(Vdrv), V_FG, V_bulk. Set `lib.HDR = lib.HDR.replace("pex_flat.spice","pexc_flat.spice"); lib.FGIC = True` for the compact cell.
 
 Main drivers: `map.py`/`loops.py` (hysteresis), `ifc*.py` (firing bands), `onset.py` (excitability), `poisson.py` (weighted inputs; supports two inputs and netlist variants), `robust.py`/`trim*.py`/`vg2*.py` (corners, temperature, Monte Carlo), `cmem.py`/`compact.py` (area scaling), `lock.py`/`twocell.py`/`ncell.py` (oscillator locking, coupling, max-cut), `stp.py` (pulsed potentiation).
 
@@ -89,12 +89,12 @@ Note: scripts were written in a single working directory; some paths are relativ
 
 **If you use this design, data or code — in a paper, thesis, tape-out or product — please cite it:**
 
-> J. L. Valtierra Sánchez de la Vega, "FGFB-SKY130: a spiking neuron in one floating-gate, floating-body nMOS transistor (SKY130, post-layout)," GitHub repository, 2026. https://github.com/jlvsdlv/fgfb-sky130
+> J. L. Valtierra Sánchez de la Vega, "FGFB-SKY130: a spiking neuron in one floating-gate, floating-bulk nMOS transistor (SKY130, post-layout)," GitHub repository, 2026. https://github.com/jlvsdlv/fgfb-sky130
 
 ```bibtex
 @misc{valtierra2026fgfb,
   author       = {Valtierra S{\'a}nchez de la Vega, Jos{\'e} Luis},
-  title        = {{FGFB-SKY130}: a spiking neuron in one floating-gate, floating-body {nMOS} transistor ({SKY130}, post-layout)},
+  title        = {{FGFB-SKY130}: a spiking neuron in one floating-gate, floating-bulk {nMOS} transistor ({SKY130}, post-layout)},
   year         = {2026},
   howpublished = {GitHub repository},
   url          = {https://github.com/jlvsdlv/fgfb-sky130}

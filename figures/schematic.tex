@@ -25,7 +25,7 @@
   % body and bulk-control transistor M2
   \draw (M1.bulk) -- ++(1.1,0) coordinate (b);
   \fill (b) circle (1.6pt);
-  \node[right] at (b) {body};
+  \node[right] at (b) {bulk};
   \draw (b) -- ++(0,-0.5) node[nmos, anchor=D, xscale=-1] (M2) {};
   \draw (M2.S) node[ground]{};
   \draw (M2.G) -- ++(0.3,0) node[right]{$V_{G2}$};
