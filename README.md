@@ -6,24 +6,15 @@ All results here come **only from the open SKY130 foundry compact models and Mag
 
 **Author:** José Luis Valtierra Sánchez de la Vega ([@jlvsdlv](https://github.com/jlvsdlv))
 
-This is released as-is, in the hope that someone with measurement access or TCAD picks it up. **If you use it, please [cite it](#how-to-cite).**
+This is released as-is. **If you use it, please [cite it](#how-to-cite).**
 
 ![layouts](layout/compact/layout_compare.png)
 
 ## Circuit
 
-```
-            Iin
-             │
-   Vmem ─────┼───────── Cmem (MIM) ── gnd
-             │ drain
-   FG ──────┤ M1  (nfet_g5v0d10v5, W/L = 1/0.5 µm, p-well in deep n-well @ 5 V)
-   │         │ source → gnd        body ── M2 (nfet_g5v0d10v5, gate = VG2) ── gnd
-   ├─ C_A ── VA   (input A)
-   ├─ C_B ── VB   (input B)
-   └─ C_fix ─ gnd
-   V_FG = V_Q + β_A·V_A + β_B·V_B + β_D·V_mem ,  β_i = C_i / C_Σ
-```
+![schematic](figures/schematic.svg)
+
+`V_FG = V_Q + β_A·V_A + β_B·V_B + β_D·V_mem`, with `β_i = C_i / C_Σ`. M1 and M2 are `nfet_g5v0d10v5` (W/L = 1/0.5 µm); M1's p-well is isolated in a deep n-well biased at 5 V, and M2 discharges the body. The control gates V_A and V_B are the neuron's inputs; V_Q is the stored floating-gate charge.
 
 | Element | Value (model) |
 |---|---|
