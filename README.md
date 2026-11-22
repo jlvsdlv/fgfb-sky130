@@ -12,7 +12,7 @@ This is released as-is. **If you use it, please [cite it](#how-to-cite).**
 
 ## Circuit
 
-![schematic](figures/schematic.svg)
+![schematic](figures/schematic.png)
 
 `V_FG = V_Q + β_A·V_A + β_B·V_B + β_D·V_mem`, with `β_i = C_i / C_Σ`. M1 and M2 are `nfet_g5v0d10v5` (W/L = 1/0.5 µm); M1's p-well is isolated in a deep n-well biased at 5 V, and M2 discharges the body. The control gates V_A and V_B are the neuron's inputs; V_Q is the stored floating-gate charge.
 
